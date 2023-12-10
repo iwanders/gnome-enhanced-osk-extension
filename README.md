@@ -1,5 +1,11 @@
 # enhanced-osk-gnome-ext
 
+Forked from https://github.com/cass00/enhanced-osk-gnome-ext.
+
+Forking because all keyboards ought to have special characters in the same place; 'shift' on the number page should change the numbers to special characters, just like pressing shift+number on a real keyboard does.
+
+# Original description
+
 Makes Gnome's OnScreen Keyboard more usable.
 
 Features:
