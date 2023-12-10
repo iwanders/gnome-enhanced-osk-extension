@@ -3,7 +3,7 @@
 # Run this script to package all necessary extension files into a .zip
 
 root_dir=$PWD
-zip_filename="enhancedosk@cass00.github.io.shell-extension.zip"
+zip_filename="iwanders-gnome-enhanced-osk-extension.zip"
 
 # Remove existing .zip
 rm -f "$zip_filename"
