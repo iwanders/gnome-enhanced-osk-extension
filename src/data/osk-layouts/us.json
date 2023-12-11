@@ -251,11 +251,7 @@
             "strings": [
               " "
             ],
-            "width": 3
-          },
-          {
-            "action": "emoji",
-            "iconName": "face-smile-symbolic"
+            "width": 4
           },
           {
             "action": "languageMenu",
@@ -531,11 +527,7 @@
             "strings": [
               " "
             ],
-            "width": 3
-          },
-          {
-            "action": "emoji",
-            "iconName": "face-smile-symbolic"
+            "width": 4
           },
           {
             "action": "languageMenu",
@@ -565,6 +557,11 @@
       "mode": "locked",
       "rows": [
         [
+          {
+            "strings": [
+              "~"
+            ]
+          },
           {
             "strings": [
               "1",
@@ -788,7 +785,7 @@
             "strings": [
               " "
             ],
-            "width": 3
+            "width": 4
           },
           {
             "strings": [
@@ -800,10 +797,6 @@
               ".",
               "…"
             ]
-          },
-          {
-            "action": "emoji",
-            "iconName": "face-smile-symbolic"
           },
           {
             "action": "languageMenu",
@@ -820,6 +813,79 @@
       "level": "opt+shift",
       "mode": "locked",
       "rows": [
+        [
+          {
+            "strings": [
+              "`"
+            ]
+          },
+          {
+            "strings": [
+              "!"
+            ]
+          },
+          {
+            "strings": [
+              "@"
+            ]
+          },
+          {
+            "strings": [
+              "#"
+            ]
+          },
+          {
+            "strings": [
+              "$",
+              "€",
+              "¢",
+              "£",
+              "¥",
+              "₱"
+            ]
+          },
+          {
+            "strings": [
+              "%"
+            ]
+          },
+          {
+            "strings": [
+              "^"
+            ]
+          },
+          {
+            "strings": [
+              "&"
+            ]
+          },
+          {
+            "strings": [
+              "*"
+            ]
+          },
+          {
+            "strings": [
+              "(",
+              "<",
+              "{",
+              "["
+            ]
+          },
+          {
+            "strings": [
+              ")",
+              ">",
+              "}",
+              "]"
+            ]
+          },
+          {
+            "iconName": "edit-clear-symbolic",
+            "keyval": "0xff08",
+            "width": 2
+          }
+        ],
         [
           {
             "label": "F1",
@@ -877,108 +943,12 @@
             ]
           },
           {
-            "strings": [
-              "`"
-            ]
-          },
-          {
-            "strings": [
-              "|"
-            ]
-          },
-          {
-            "strings": [
-              "•",
-              "♪",
-              "♥",
-              "♠",
-              "♦",
-              "♣"
-            ]
-          },
-          {
-            "strings": [
-              "√"
-            ]
-          },
-          {
-            "strings": [
-              "Π",
-              "π"
-            ]
-          },
-          {
-            "strings": [
-              "÷"
-            ]
-          },
-          {
-            "strings": [
-              "×"
-            ]
-          },
-          {
-            "strings": [
-              "¶",
-              "§"
-            ]
-          },
-          {
-            "strings": [
-              "∆"
-            ]
-          },
-          {
             "iconName": "edit-clear-symbolic",
             "keyval": "0xff08",
             "width": 2
           }
         ],
         [
-          {
-            "strings": [
-              "£"
-            ]
-          },
-          {
-            "strings": [
-              "¢"
-            ]
-          },
-          {
-            "strings": [
-              "€"
-            ]
-          },
-          {
-            "strings": [
-              "¥"
-            ]
-          },
-          {
-            "strings": [
-              "^",
-              "↑",
-              "↓",
-              "←",
-              "→"
-            ]
-          },
-          {
-            "strings": [
-              "°",
-              "′",
-              "″"
-            ]
-          },
-          {
-            "strings": [
-              "=",
-              "≠",
-              "≈",
-              "∞"
-            ]
-          },
           {
             "strings": [
               "{"
@@ -1001,31 +971,6 @@
             "label": "?123",
             "level": 2,
             "width": 2
-          },
-          {
-            "strings": [
-              "\\"
-            ]
-          },
-          {
-            "strings": [
-              "©"
-            ]
-          },
-          {
-            "strings": [
-              "®"
-            ]
-          },
-          {
-            "strings": [
-              "™"
-            ]
-          },
-          {
-            "strings": [
-              "℅"
-            ]
           },
           {
             "strings": [
@@ -1071,7 +1016,7 @@
             "strings": [
               " "
             ],
-            "width": 3
+            "width": 4
           },
           {
             "strings": [
@@ -1083,10 +1028,6 @@
               ".",
               "…"
             ]
-          },
-          {
-            "action": "emoji",
-            "iconName": "face-smile-symbolic"
           },
           {
             "action": "languageMenu",

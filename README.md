@@ -4,7 +4,7 @@ Forked from https://github.com/cass00/enhanced-osk-gnome-ext.
 
 Forking because all keyboards ought to have special characters in the same place; 'shift' on the number page should change the numbers to special characters, just like pressing shift+number on a real keyboard does.
 
-The default gnome on screen keyboard doesn't have this, and apparently never had it as it came from [some android keymap](https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/52a779e432f16785e78a15404da3fdd6252833c3).
+The default gnome on screen keyboard doesn't have this, and apparently never had it as it came from [some android keymap](https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/52a779e432f16785e78a15404da3fdd6252833c3). Who needs `®`, `™` or `∆` in an onscreen keyboard?
 
 Keyboard layers should also not change in width, consistency is key for any input method.
 
