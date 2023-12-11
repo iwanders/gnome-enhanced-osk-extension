@@ -228,14 +228,14 @@
         ],
         [
           {
-            "action": "modifier",
-            "keyval": "0xffe3",
-            "label": "Ctrl"
-          },
-          {
             "action": "levelSwitch",
             "label": "?123",
             "level": 2
+          },
+          {
+            "action": "modifier",
+            "keyval": "0xffe3",
+            "label": "Ctrl"
           },
           {
             "action": "modifier",
@@ -508,14 +508,14 @@
         ],
         [
           {
-            "action": "modifier",
-            "keyval": "0xffe3",
-            "label": "Ctrl"
-          },
-          {
             "action": "levelSwitch",
             "label": "?123",
             "level": 2
+          },
+          {
+            "action": "modifier",
+            "keyval": "0xffe3",
+            "label": "Ctrl"
           },
           {
             "action": "modifier",

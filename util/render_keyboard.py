@@ -18,12 +18,17 @@ def ascii_level(level):
         if "strings" in k:
             l = k["strings"][0][0:3]
         if "iconName" in k:
-            l = k["iconName"].replace("go-", "").replace("-symbolic", "")[0:3]
+            l = k["iconName"].replace("go-", "").replace("-symbolic", "").replace("keyboard-", "")[0:3]
         return f"{l: ^{w}}"
+    def row_length(r):
+        return int(sum(k.get("width", 1) for k in r))
+
     for r in level["rows"]:
         keys = [format_key(k) for k in r]
         row = "|".join(keys)
-        data += row + "\n"
+        width = row_length(r)
+        align = 120 - len(row)
+        data += f"{row}  {width: >{align}d}"+ "\n"
     return data
     
 
