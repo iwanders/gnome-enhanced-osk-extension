@@ -229,7 +229,7 @@
         [
           {
             "action": "levelSwitch",
-            "label": "?123",
+            "label": "123",
             "level": 2
           },
           {
@@ -505,7 +505,7 @@
         [
           {
             "action": "levelSwitch",
-            "label": "?123",
+            "label": "123",
             "level": 2
           },
           {
@@ -870,105 +870,112 @@
         ],
         [
           {
-            "label": "F1",
-            "keyval": "0xffbe"
+            "keyval": "0xff09",
+            "label": "Tab",
+            "width": 1.5
           },
           {
-            "label": "F2",
-            "keyval": "0xffbf"
+            "strings": [
+              "_"
+            ]
           },
           {
-            "label": "F3",
-            "keyval": "0xffc0"
+            "strings": [
+              "\\"
+            ]
           },
           {
-            "label": "F4",
-            "keyval": "0xffc1"
+            "strings": [
+              "|"
+            ]
           },
-          {
-            "label": "F5",
-            "keyval": "0xffc2"
-          },
-          {
-            "label": "F6",
-            "keyval": "0xffc3"
-          },
-          {
-            "label": "F7",
-            "keyval": "0xffc4"
-          },
-          {
-            "label": "F8",
-            "keyval": "0xffc5"
-          },
-          {
-            "label": "F9",
-            "keyval": "0xffc6"
-          },
-          {
-            "label": "F10",
-            "keyval": "0xffc7"
-          },
-          {
-            "label": "F11",
-            "keyval": "0xffc8"
-          },
-          {
-            "label": "F12",
-            "keyval": "0xffc9"
-          }
-        ],
-        [
           {
             "strings": [
               "~"
             ]
           },
           {
-            "iconName": "edit-clear-symbolic",
-            "keyval": "0xff08",
-            "width": 2
-          }
-        ],
-        [
-          {
             "strings": [
-              "{"
+              "<"
             ]
           },
           {
             "strings": [
-              "}"
+              ">"
+            ]
+          },
+          {
+            "strings": [
+              "$"
+            ]
+          },
+          {
+            "strings": [
+              "£"
+            ]
+          },
+          {
+            "strings": [
+              "Ұ"
             ]
           },
           {
             "iconName": "keyboard-enter-symbolic",
             "keyval": "0xff0d",
-            "width": 3
+            "width": 2.5
           }
         ],
         [
           {
             "action": "levelSwitch",
-            "label": "?123",
+            "label": "123",
             "level": 2,
             "width": 2
           },
           {
+            "label": "redo",
+            "keyval": "0xff66",
+            "width": 2.0
+          },
+          {
             "strings": [
-              "["
+              "."
             ]
           },
           {
             "strings": [
-              "]"
+              ","
             ]
+          },
+          {
+            "strings": [
+              "?"
+            ]
+          },
+          {
+            "strings": [
+              "!"
+            ]
+          },
+          {
+            "strings": [
+              "'"
+            ]
+          },
+          {
+            "strings": [
+              "\""
+            ]
+          },
+          {
+            "iconName": "go-up-symbolic",
+            "keyval": "0xff52"
           },
           {
             "action": "levelSwitch",
-            "label": "?123",
+            "label": "123",
             "level": 2,
-            "width": 3
+            "width": 2
           }
         ],
         [
@@ -980,18 +987,26 @@
           },
           {
             "strings": [
-              "<",
-              "‹",
-              "≤",
-              "«"
+              "😀",
+              "😂",
+              "😮",
+              "😉",
+              "🙄",
+              "😐",
+              "😢",
+              "😭"
             ]
           },
           {
             "strings": [
-              ">",
-              "›",
-              "≥",
-              "»"
+              "🎉",
+              "👍",
+              "👎",
+              "👋",
+              "👌",
+              "👌",
+              "🙏",
+              "🤦"
             ]
           },
           {
@@ -1001,19 +1016,20 @@
             "width": 4
           },
           {
-            "strings": [
-              ","
-            ]
-          },
-          {
-            "strings": [
-              ".",
-              "…"
-            ]
-          },
-          {
             "action": "languageMenu",
             "iconName": "keyboard-layout-symbolic"
+          },
+          {
+            "iconName": "go-previous-symbolic",
+            "keyval": "0xff51"
+          },
+          {
+            "iconName": "go-down-symbolic",
+            "keyval": "0xff54"
+          },
+          {
+            "iconName": "go-next-symbolic",
+            "keyval": "0xff53"
           },
           {
             "action": "hide",
