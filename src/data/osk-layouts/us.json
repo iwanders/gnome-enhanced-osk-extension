@@ -742,7 +742,7 @@
         [
           {
             "action": "levelSwitch",
-            "label": "ABC",
+            "label": "abc",
             "level": 0,
             "width": 1.0
           },
@@ -981,7 +981,7 @@
         [
           {
             "action": "levelSwitch",
-            "label": "ABC",
+            "label": "abc",
             "level": 0,
             "width": 2
           },
