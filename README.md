@@ -1,14 +1,51 @@
 # enhanced-osk-gnome-ext
 
-Forked from https://github.com/cass00/enhanced-osk-gnome-ext.
+Forked from https://github.com/cass00/enhanced-osk-gnome-ext, which itself is a second fork of the source.
 
-Forking because all keyboards ought to have special characters in the same place; 'shift' on the number page should change the numbers to special characters, just like pressing shift+number on a real keyboard does.
+Forking here to easily be able to modify the key layout used on my NixOS surface. All keyboards ought to have special characters in the same place; 'shift' on the number page should change the numbers to the special characters one would expect, just like pressing shift+number on a real keyboard does.
 
-The default gnome on screen keyboard doesn't have this, and apparently never had it as it came from [some android keymap](https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/52a779e432f16785e78a15404da3fdd6252833c3). Who needs `®`, `™` or `∆` in an onscreen keyboard?
+The default gnome on screen keyboard doesn't have this property, there's math symbols on shift number values, and apparently never had it as it came from [some android keymap](https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/52a779e432f16785e78a15404da3fdd6252833c3).Also, who needs `®`, `™` or `∆` in an onscreen keyboard?
 
 Keyboard layers should also not change in width, consistency is key for any input method.
 
-# Original description
+Layout of of `us.json` in this fork:
+```
+util$ ./render_keyboard.py ../src/data/osk-layouts/us.json 
+
+Level:    mode:  default
+Esc | q  | w  | e  | r  | t  | y  | u  | i  | o  | p  |  clear  |     13
+ Tab  | a  | s  | d  | f  | g  | h  | j  | k  | l  |   enter    |     13
+  shift  | z  | x  | c  | v  | b  | n  | m  | .  | up |  shift  |     13
+123 |Ctrl|Supe|Alt |                   |layo|prev|down|next|hide|     13
+
+
+
+Level:  shift  mode:  latched
+Esc | Q  | W  | E  | R  | T  | Y  | U  | I  | O  | P  |  clear  |     13
+ Tab  | A  | S  | D  | F  | G  | H  | J  | K  | L  |   enter    |     13
+  shift  | Z  | X  | C  | V  | B  | N  | M  | .  | up |  shift  |     13
+123 |Ctrl|Supe|Alt |                   |layo|prev|down|next|hide|     13
+
+
+
+Level:  opt  mode:  locked
+ ~  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 0  |  clear  |     13
+ Tab  | -  | /  | :  | ;  | (  | )  | €  | &  | @  |   enter    |     13
+   =/<   |  undo   | .  | ,  | ?  | !  | '  | "  | up |   =/<   |     13
+abc |Ctrl|Supe|Alt |                   |layo|prev|down|next|hide|     13
+
+
+
+Level:  opt+shift  mode:  locked
+ `  | !  | @  | #  | $  | %  | ^  | &  | *  | (  | )  |  clear  |     13
+ Tab  | _  | \  | |  | ~  | <  | >  | $  | £  | Ұ  |   enter    |     13
+   123   |  redo   | .  | ,  | ?  | !  | '  | "  | up |   123   |     13
+   abc   | 😀 | 🎉 |                   |layo|prev|down|next|hide|     13
+
+```
+
+
+# Original Readme
 
 Makes Gnome's OnScreen Keyboard more usable.
 
