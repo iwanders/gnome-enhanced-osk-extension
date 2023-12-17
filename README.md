@@ -45,6 +45,8 @@ Level:  opt+shift  mode:  locked
 ```
 
 
+Finally found the bar above the keys element; `this._suggestions`.
+
 # Original Readme
 
 Makes Gnome's OnScreen Keyboard more usable.
