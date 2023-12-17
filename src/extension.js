@@ -475,6 +475,7 @@ export default class enhancedosk extends Extension {
   }
 
   getDefaultLayouts() {
+    //return Gio.Resource.load("/nix/store/1831r4rwifylnfc0zl8wnn3cr87zl5rf-gnome-shell-45.1/share/gnome-shell/gnome-shell-osk-layouts.gresource");
     return Gio.Resource.load(
       (GLib.getenv("JHBUILD_PREFIX") || "/usr") +
         "/share/gnome-shell/gnome-shell-osk-layouts.gresource"
