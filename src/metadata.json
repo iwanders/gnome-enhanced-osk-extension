@@ -4,6 +4,7 @@
   "shell-version": [
     "45"
   ],
+  "session-modes": ["user", "unlock-dialog"],
   "url": "https://github.com/iwanders/gnome-enhanced-osk-extension",
   "uuid": "iwanders-gnome-enhanced-osk-extension"
 }
