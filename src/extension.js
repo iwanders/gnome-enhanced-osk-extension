@@ -73,7 +73,8 @@ let OSKIndicator = GObject.registerClass(
       });
 
       this.connect("touch-event", function (actor, event) {
-        forceToggleOSK();
+        if (event.type() === Clutter.EventType.TOUCH_END)
+          forceToggleOSK();
       });
     }
   }
@@ -94,7 +95,8 @@ let OSKLockIndicator = GObject.registerClass(
       });
 
       this.connect("touch-event", function (actor, event) {
-        toggleLocked();
+        if (event.type() === Clutter.EventType.TOUCH_END)
+          toggleLocked();
       });
     }
   }
@@ -104,7 +106,6 @@ function toggleLocked() {
   let current_locked = settings.get_boolean('locked');
   let new_state = !current_locked;
   settings.set_boolean("locked", new_state);
-  //  console.warn("Toggling locked, new state is:", new_state);
   if (new_state) {
     lock_icon.set_icon_name("system-lock-screen-symbolic");
   } else {
@@ -354,7 +355,6 @@ export default class enhancedosk extends Extension {
       Keyboard.KeyboardManager.prototype, 'open',
       originalMethod => {
         return function (...args) {
-          //  console.warn("KeyboardManager Open, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -365,7 +365,6 @@ export default class enhancedosk extends Extension {
       Keyboard.KeyboardManager.prototype, 'close',
       originalMethod => {
         return function (...args) {
-          //  console.warn("KeyboardManager Close, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -376,7 +375,6 @@ export default class enhancedosk extends Extension {
       Keyboard.Keyboard.prototype, 'open',
       originalMethod => {
         return function (...args) {
-          //  console.warn("Keyboard Open, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -387,7 +385,6 @@ export default class enhancedosk extends Extension {
       Keyboard.Keyboard.prototype, 'close',
       originalMethod => {
         return function (...args) {
-          //  console.warn("Keyboard Close, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -560,8 +557,8 @@ export default class enhancedosk extends Extension {
     //return Gio.Resource.load("/nix/store/1831r4rwifylnfc0zl8wnn3cr87zl5rf-gnome-shell-45.1/share/gnome-shell/gnome-shell-osk-layouts.gresource");
     return Gio.Resource.load(
       (GLib.getenv("JHBUILD_PREFIX") || "/usr") +
-        //  "/share/gnome-shell/gnome-shell-osk-layouts.gresource"
-        "/../run/current-system/sw/share/gnome-shell/gnome-shell-osk-layouts.gresource"
+        "/share/gnome-shell/gnome-shell-osk-layouts.gresource"
+        //  "/../run/crrent-system/sw/share/gnome-shell/gnome-shell-osk-layouts.gresource"
     );
   }
 
