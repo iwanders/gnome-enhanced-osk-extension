@@ -29,6 +29,8 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
                                    forceTouch.active);
       window._settings.set_boolean("show-suggestions",
                                    showSuggestions.active);
+      window._settings.set_boolean("locked",
+                                   locked.active);
 
 		});
 		group.add(apply)
@@ -120,5 +122,18 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
 
 		row_showSuggestions.add_suffix(showSuggestions);
 		row_showSuggestions.activatable_widget = showSuggestions;
+
+    const row_locked = new Adw.ActionRow({
+			title: _('Lock the keyboard state')
+		});
+		group.add(row_locked);
+
+    const switchLocked = new Gtk.Switch({
+			active: window._settings.get_boolean("locked"),
+			valign: Gtk.Align.CENTER,
+		});
+
+		row_locked.add_suffix(switchLocked);
+		row_locked.activatable_widget = switchLocked;
   }
 }

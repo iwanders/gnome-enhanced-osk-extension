@@ -75,11 +75,19 @@ let OSKIndicator = GObject.registerClass(
         }
 
         if (button == 3) {
-          ref_this.openPreferences();
+          let current = settings.get_boolean('locked');
+          let new_state = !current;
+          //  console.warn("new state:", new_state);
+          settings.set_boolean("locked", new_state);
+          if (new_state) {
+            icon.set_icon_name("input-keyboard-symbolic");
+          } else {
+            icon.set_icon_name("video-display-symbolic");
+          }
         }
       });
 
-      this.connect("touch-event", function () {
+      this.connect("touch-event", function (actor, event) {
         toggleOSK();
       });
     }
@@ -87,8 +95,8 @@ let OSKIndicator = GObject.registerClass(
 );
 
 function toggleOSK() {
-  //Main.keyboard._keyboard._keyboardController.destroy();
-  //Main.keyboard._keyboard._setupKeyboard();
+  // In here, we ensure the lock state is actually false, such that we can
+  // always toggle it.
   if (Main.keyboard._keyboard !== null ){
     if (Main.keyboard._keyboard._keyboardVisible) return Main.keyboard.close();
     Main.keyboard.open(Main.layoutManager.bottomIndex);
@@ -313,6 +321,50 @@ export default class enhancedosk extends Extension {
       });
 
     this._injectionManager.overrideMethod(
+      Keyboard.KeyboardManager.prototype, 'open',
+      originalMethod => {
+        return function (...args) {
+          console.warn("KeyboardManager Open, with locked state of: ", settings.get_boolean('locked'));
+          if (settings.get_boolean('locked'))
+            return;
+          originalMethod.call(this, ...args);
+        }
+      });
+
+    this._injectionManager.overrideMethod(
+      Keyboard.KeyboardManager.prototype, 'close',
+      originalMethod => {
+        return function (...args) {
+          console.warn("KeyboardManager Close, with locked state of: ", settings.get_boolean('locked'));
+          if (settings.get_boolean('locked'))
+            return;
+          originalMethod.call(this, ...args);
+        }
+      });
+
+    this._injectionManager.overrideMethod(
+      Keyboard.Keyboard.prototype, 'open',
+      originalMethod => {
+        return function (...args) {
+          console.warn("Keyboard Open, with locked state of: ", settings.get_boolean('locked'));
+          if (settings.get_boolean('locked'))
+            return;
+          originalMethod.call(this, ...args);
+        }
+      });
+
+    this._injectionManager.overrideMethod(
+      Keyboard.Keyboard.prototype, 'close',
+      originalMethod => {
+        return function (...args) {
+          console.warn("Keyboard Close, with locked state of: ", settings.get_boolean('locked'));
+          if (settings.get_boolean('locked'))
+            return;
+          originalMethod.call(this, ...args);
+        }
+      });
+
+    this._injectionManager.overrideMethod(
       Keyboard.Keyboard.prototype, '_init',
       originalMethod => {
         return function (...args) {
@@ -479,6 +531,7 @@ export default class enhancedosk extends Extension {
     return Gio.Resource.load(
       (GLib.getenv("JHBUILD_PREFIX") || "/usr") +
         "/share/gnome-shell/gnome-shell-osk-layouts.gresource"
+        //  "/../run/current-system/sw/share/gnome-shell/gnome-shell-osk-layouts.gresource"
     );
   }
 
