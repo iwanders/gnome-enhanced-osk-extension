@@ -17,6 +17,7 @@ const KEY_RELEASE_TIMEOUT = 100;
 
 let settings;
 let keyReleaseTimeoutId;
+let lock_icon;
 
 //Model class for _addrowKeys emulation
 class KeyboardModel {
@@ -69,30 +70,60 @@ let OSKIndicator = GObject.registerClass(
 
       this.connect("button-press-event", function (_actor, event) {
         let button = event.get_button();
+        let current_locked = settings.get_boolean('locked');
 
+        if (current_locked) {
+          toggleLocked();
+          return;
+        }
+        
         if (button == 1) {
           toggleOSK();
         }
 
         if (button == 3) {
-          let current = settings.get_boolean('locked');
-          let new_state = !current;
-          //  console.warn("new state:", new_state);
-          settings.set_boolean("locked", new_state);
-          if (new_state) {
-            icon.set_icon_name("input-keyboard-symbolic");
-          } else {
-            icon.set_icon_name("video-display-symbolic");
-          }
+          toggleLocked();
         }
       });
-
       this.connect("touch-event", function (actor, event) {
         toggleOSK();
       });
     }
   }
 );
+let OSKLockIndicator = GObject.registerClass(
+  { GTypeName: "OSKLockIndicator" },
+  class OSKLockIndicator extends PanelMenu.Button {
+    _init(ref_this) {
+      super._init(0.0, `${ref_this.metadata.name} Indicator`, false);
+      lock_icon =  new St.Icon({
+        icon_name: "system-lock-screen-symbolic",
+        style_class: "system-status-icon",
+      });
+      this.add_child(lock_icon);
+
+      this.connect("button-press-event", function (_actor, event) {
+        toggleLocked();
+      });
+
+      this.connect("touch-event", function (actor, event) {
+        toggleLocked();
+      });
+    }
+  }
+);
+
+function toggleLocked() {
+  let current_locked = settings.get_boolean('locked');
+  let new_state = !current_locked;
+  //  settings.set_boolean("locked", new_state);
+  //  console.warn("Toggling locked, new state is:", new_state);
+  if (new_state) {
+    lock_icon.set_icon_name("system-lock-screen-symbolic");
+  } else {
+    lock_icon.set_icon_name("auth-sim-locked-symbolic");
+  }
+}
 
 function toggleOSK() {
   // In here, we ensure the lock state is actually false, such that we can
@@ -203,7 +234,9 @@ export default class enhancedosk extends Extension {
     // Set up the indicator in the status area
     if (settings.get_boolean("show-statusbar-icon")) {
       this._indicator = new OSKIndicator(this);
+      this._lock_indicator = new OSKLockIndicator(this);
       Main.panel.addToStatusArea("OSKIndicator", this._indicator);
+      Main.panel.addToStatusArea("OSKLockIndicator", this._lock_indicator);
     }
 
     if (settings.get_boolean("force-touch-input")) {
@@ -324,7 +357,7 @@ export default class enhancedosk extends Extension {
       Keyboard.KeyboardManager.prototype, 'open',
       originalMethod => {
         return function (...args) {
-          console.warn("KeyboardManager Open, with locked state of: ", settings.get_boolean('locked'));
+          //  console.warn("KeyboardManager Open, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -335,7 +368,7 @@ export default class enhancedosk extends Extension {
       Keyboard.KeyboardManager.prototype, 'close',
       originalMethod => {
         return function (...args) {
-          console.warn("KeyboardManager Close, with locked state of: ", settings.get_boolean('locked'));
+          //  console.warn("KeyboardManager Close, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -346,7 +379,7 @@ export default class enhancedosk extends Extension {
       Keyboard.Keyboard.prototype, 'open',
       originalMethod => {
         return function (...args) {
-          console.warn("Keyboard Open, with locked state of: ", settings.get_boolean('locked'));
+          //  console.warn("Keyboard Open, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
@@ -357,7 +390,7 @@ export default class enhancedosk extends Extension {
       Keyboard.Keyboard.prototype, 'close',
       originalMethod => {
         return function (...args) {
-          console.warn("Keyboard Close, with locked state of: ", settings.get_boolean('locked'));
+          //  console.warn("Keyboard Close, with locked state of: ", settings.get_boolean('locked'));
           if (settings.get_boolean('locked'))
             return;
           originalMethod.call(this, ...args);
