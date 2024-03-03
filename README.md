@@ -8,6 +8,7 @@ The default gnome on screen keyboard doesn't have this property, there's math sy
 
 Keyboard layers should also not change in width, consistency is key for any input method.
 
+
 Layout of of `us.json` in this fork:
 ```
 util$ ./render_keyboard.py ../src/data/osk-layouts/us.json 
@@ -45,10 +46,17 @@ Level:  opt+shift  mode:  locked
 ```
 
 
-Finally found the bar above the keys element; `this._suggestions`.
+Finally found the bar above the keys element; `this._suggestions`, there's an option to disable this now.
+
+It also adds a second button in the panel to lock the current keyboard state (hidden or shown) to disable gnome's automatic detection. I found I ended up using the touch screen on my Surface Pro 9, even with the keyboard attached. In that case I don't want a keyboard.
 
 Notes for myself:
 - Source code in gnome: https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/45.0/js/ui/keyboard.js
+
+Development:
+- Enter env with `nix develop current#pkgs.gnome-osk`
+- Run `./package-extension.sh`
+- Put unzipped contents in `~/.local/share/gnome-shell/extensions/iwanders-gnome-enhanced-osk-extension`
 
 # Original Readme
 
