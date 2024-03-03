@@ -132,18 +132,6 @@ function forceToggleOSK() {
   }
 }
 
-function initialisationReset() {
-  let current_locked = settings.get_boolean('locked');
-  if (current_locked){
-    toggleLocked();
-  }
-  Main.keyboard.open();
-  Main.keyboard.close();
-  if (current_locked){
-    toggleLocked();
-  }
-}
-
 function override_getCurrentGroup() {
   // Special case for Korean, if Hangul mode is disabled, use the 'us' keymap
   if (this._currentSource.id === 'hangul') {
@@ -260,14 +248,10 @@ export default class enhancedosk extends Extension {
     settings.connect("changed::show-statusbar-icon", () => {
       if (settings.get_boolean("show-statusbar-icon")) {
         this._indicator = new OSKIndicator(this);
-        this._lock_indicator = new OSKLockIndicator(this);
         Main.panel.addToStatusArea("OSKIndicator", this._indicator);
-        Main.panel.addToStatusArea("OSKLockIndicator", this._lock_indicator);
       } else if (this._indicator !== null) {
         this._indicator.destroy();
-        this._lock_indicator.destroy();
         this._indicator = null;
-        this._lock_indicator = null;
       }
     });
 
@@ -288,10 +272,6 @@ export default class enhancedosk extends Extension {
       affectsStruts: settings.get_boolean("resize-desktop"),
       trackFullscreen: false,
     });
-
-    // Ensures the keyboard is properly hidden, it seems to stick out if
-    // the suggestions are hidden and the desktop has a panel.
-    initialisationReset();
   }
 
   disable() {
@@ -305,11 +285,6 @@ export default class enhancedosk extends Extension {
     if (this._indicator instanceof OSKIndicator) {
       this._indicator.destroy();
       this._indicator = null;
-    }
-
-    if (this._lock_indicator instanceof OSKLockIndicator) {
-      this._lock_indicator.destroy();
-      this._lock_indicator = null;
     }
 
     settings = null;
